@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DoubleFrog</title>
-<meta name="description" content="DoubleFrog is a tiny game studio making GOONS!, an auto-battler full of little guys.">
+<meta name="description" content="DoubleFrog is two game devs making silly games, like GOONS!, an auto-battler full of little guys.">
 <link rel="icon" href="img/goons/doubleFrog.png">
 <style>
   @font-face { font-family: "m5x7"; src: url("fonts/m5x7.ttf") format("truetype"); font-display: block; }
@@ -163,7 +163,8 @@
     transition: transform 0.15s;
   }
   .game-card:hover { transform: rotate(0.5deg) scale(1.02); }
-  .game-card img { width: min(340px, 45%); flex-shrink: 0; }
+  .game-card > a { width: min(340px, 45%); flex-shrink: 0; }
+  .game-card > a img { width: 100%; display: block; }
   .game-card p { margin: 10px 0; color: var(--muted); }
   .badge {
     display: inline-block;
@@ -173,7 +174,8 @@
     padding: 2px 8px;
     transform: rotate(-3deg);
   }
-  .more { color: var(--yellow); }
+  .more { color: var(--yellow); text-decoration: none; }
+  .more:hover { text-decoration: underline; }
 
   .devs {
     display: grid;
@@ -196,13 +198,15 @@
     width: 112px;
     height: 112px;
     margin: 0 auto 12px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
     box-shadow: 0 0 0 3px #000;
   }
   .dev-pic.green { background: var(--green-dark); }
   .dev-pic.red { background: var(--red-dark); }
-  .dev-pic img { --scale: 4; }
+  .dev-pic img { width: 96px; height: 96px; display: block; }
   .dev:hover .dev-pic img { animation: wiggle 0.4s steps(2) infinite; }
   .dev h3 { margin: 0; font-family: "m6x11", monospace; font-size: 32px; text-shadow: 2px 2px 0 var(--title-shadow); }
   .dev .tag { margin: 6px 0; }
@@ -393,19 +397,6 @@
   }
   .roster-note { text-align: center; color: var(--muted); margin-top: 18px; }
 
-  .studio {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    background: var(--panel);
-    padding: 28px;
-    box-shadow: 0 0 0 3px #000, 8px 8px 0 3px #000;
-    transform: rotate(0.6deg);
-  }
-  .studio img { --scale: 4; flex-shrink: 0; animation: wobble 3s ease-in-out infinite; }
-  .studio h2 { text-align: left; margin-bottom: 10px; }
-  .studio p { margin: 0 0 10px; color: var(--muted); }
-  .studio p strong { color: var(--ink); }
 
   footer {
     text-align: center;
@@ -414,7 +405,6 @@
     font-family: "m6x11", monospace;
     font-size: 16px;
   }
-  footer .ribbit { color: var(--green); }
 
   .socials { position: relative; z-index: 1; padding-bottom: 8px; }
   .socials .sub { text-align: center; }
@@ -481,7 +471,7 @@
   .tree-link:nth-of-type(even) { transform: rotate(1deg); }
   .tree-link:hover { transform: scale(1.04); }
   .tree-link img { --scale: 2; }
-  .tree-link img[src*="doubleFrog"] { --scale: 1; }
+  .tree-link img[src*="doubleFrog"] { margin: -16px 0; }
   .tree-link:hover img { animation: wiggle 0.4s steps(2) infinite; }
 
   @media (max-width: 640px) {
@@ -489,13 +479,10 @@
     .studio-logo { --scale: 5; }
     .tabs a { padding: 6px 10px; }
     .game-card { flex-direction: column; text-align: center; }
-    .game-card img { width: 100%; }
+    .game-card > a { width: 100%; }
     .floater { --scale: 3; }
     .tagline { margin-top: -16px; }
-    .studio { flex-direction: column; text-align: center; }
-    .studio h2 { text-align: center; }
-    .studio img { --scale: 3; }
-  }
+      }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -522,21 +509,21 @@
   <div class="wrap studio-hero">
     <img class="px studio-logo" src="img/goons/doubleFrog.png" alt="DoubleFrog logo">
     <h1><span class="double">Double</span><span class="frog">Frog</span></h1>
-    <p class="tagline">a tiny game studio making tiny weirdos</p>
-    <p class="sub">We make small, silly, surprisingly deep games about lovable little creatures. Games you can learn in a minute and lose a weekend to.</p>
+    <p class="tagline">two game devs making silly games!</p>
+    <p class="sub">We make simple, easy-to-learn games with replayability in mind!</p>
   </div>
 
   <section>
     <div class="wrap">
       <h2>Our games</h2>
-      <a class="game-card" href="#goons">
-        <img src="img/logo_goons.png" alt="GOONS!">
+      <div class="game-card">
+        <a href="#goons"><img src="img/logo_goons.png" alt="GOONS!"></a>
         <div>
           <span class="badge">in development</span>
           <p>An auto-battler with roguelike runs. Fill your board with goons, watch them fight, fly through space, and repeat until the universe gives up.</p>
-          <span class="more">meet the goons &rarr;</span>
+          <a class="more" href="#goons">meet the goons &rarr;</a>
         </div>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -545,14 +532,14 @@
       <h2>The frogs</h2>
       <div class="devs">
         <div class="dev">
-          <div class="dev-pic green"><img class="px" src="img/goons/greenKeeble.png" alt=""></div>
+          <div class="dev-pic green"><img class="px" src="img/luke.png" alt="Luke's pixel portrait"></div>
           <h3>Luke Bradaric</h3>
           <p class="tag">aka <strong>kelu</strong></p>
           <p class="role">code &amp; design</p>
           <p>Makes the goons do things. Has argued with a goon about a number at least once.</p>
         </div>
         <div class="dev">
-          <div class="dev-pic red"><img class="px" src="img/goons/pinkKeeble.png" alt=""></div>
+          <div class="dev-pic red"><img class="px" src="img/frutti.png" alt="Francesca's pixel portrait"></div>
           <h3>Francesca Mancillas</h3>
           <p class="tag">aka <strong>Frutti</strong></p>
           <p class="role">art &amp; design</p>
@@ -562,18 +549,6 @@
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="studio">
-        <img class="px" src="img/goons/doubleFrog.png" alt="">
-        <div>
-          <h2>Two frogs, one studio</h2>
-          <p>DoubleFrog is just the two of us. Luke writes the code, Francesca draws the art, and we dream up the goons together.</p>
-          <p>Right now we're making <strong>GOONS!</strong> Later it might mean more goons. We have not ruled out more goons.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <main class="page" id="page-goons">
@@ -592,17 +567,17 @@
         <div class="card">
           <img class="px" src="img/goons/muffin.png" alt="">
           <h3>Build a board</h3>
-          <p>Shop for goons, cram them onto a grid, and stand the right ones next to each other. Adjacency is love.</p>
+          <p>Collect goons, upgrade them, set them up on the board!</p>
         </div>
         <div class="card">
           <img class="px" src="img/goons/snorb.png" alt="">
           <h3>Watch the chaos</h3>
-          <p>Battles play themselves. Your only job is to sit back and yell encouragement at tiny pixel creatures.</p>
+          <p>Set up powerful synergies and watch the crazy battles unfold!</p>
         </div>
         <div class="card">
           <img class="px" src="img/goons/Eye.png" alt="">
           <h3>Fly through space</h3>
-          <p>Hop sector to sector, combine copies into Silver and Golden goons, and defeat bosses with suspiciously big health bars.</p>
+          <p>Fly from planet to planet discovering unique events and defeating difficult bosses!</p>
         </div>
       </div>
     </div>
@@ -610,7 +585,7 @@
 
   <section id="meet">
     <div class="wrap">
-      <h2>Meet the gang</h2>
+      <h2>Meet the goons!</h2>
       <div class="roster" id="roster"></div>
       <p class="roster-note">click a goon. they have things to say.</p>
     </div>
@@ -628,14 +603,14 @@
     <a class="tree-link" style="--c: #5865f2" href="https://discord.gg/9V5pJeUgAH" target="_blank" rel="noopener">
       <img class="px" src="img/goons/littleBuddy.png" alt="">Join the Discord
     </a>
-    <a class="tree-link" style="--c: #d62828" href="https://www.youtube.com/@playgoonsgame" target="_blank" rel="noopener">
-      <img class="px" src="img/goons/Eye.png" alt="">YouTube
+    <a class="tree-link" style="--c: #c13584" href="https://www.instagram.com/playgoonsgame" target="_blank" rel="noopener">
+      <img class="px" src="img/goons/kitty.png" alt="">Instagram
     </a>
     <a class="tree-link" style="--c: #16151f" href="https://www.tiktok.com/@playgoonsgame" target="_blank" rel="noopener">
       <img class="px" src="img/goons/mrSmiler.png" alt="">TikTok
     </a>
-    <a class="tree-link" style="--c: #c13584" href="https://www.instagram.com/playgoonsgame" target="_blank" rel="noopener">
-      <img class="px" src="img/goons/kitty.png" alt="">Instagram
+    <a class="tree-link" style="--c: #d62828" href="https://www.youtube.com/@playgoonsgame" target="_blank" rel="noopener">
+      <img class="px" src="img/goons/Eye.png" alt="">YouTube
     </a>
     <a class="tree-link" style="--c: #424c6e" href="#about">
       <img class="px" src="img/goons/doubleFrog.png" alt="">About DoubleFrog
@@ -654,14 +629,14 @@
       <a class="social" style="--c: #5865f2" href="https://discord.gg/9V5pJeUgAH" target="_blank" rel="noopener">
         <img class="px" src="img/goons/littleBuddy.png" alt=""><span>Discord<small>can we be friends?</small></span>
       </a>
-      <a class="social" style="--c: #d62828" href="https://www.youtube.com/@playgoonsgame" target="_blank" rel="noopener">
-        <img class="px" src="img/goons/Eye.png" alt=""><span>YouTube<small>@playgoonsgame</small></span>
+      <a class="social" style="--c: #c13584" href="https://www.instagram.com/playgoonsgame" target="_blank" rel="noopener">
+        <img class="px" src="img/goons/kitty.png" alt=""><span>Instagram<small>@playgoonsgame</small></span>
       </a>
       <a class="social" style="--c: #16151f" href="https://www.tiktok.com/@playgoonsgame" target="_blank" rel="noopener">
         <img class="px" src="img/goons/mrSmiler.png" alt=""><span>TikTok<small>@playgoonsgame</small></span>
       </a>
-      <a class="social" style="--c: #c13584" href="https://www.instagram.com/playgoonsgame" target="_blank" rel="noopener">
-        <img class="px" src="img/goons/kitty.png" alt=""><span>Instagram<small>@playgoonsgame</small></span>
+      <a class="social" style="--c: #d62828" href="https://www.youtube.com/@playgoonsgame" target="_blank" rel="noopener">
+        <img class="px" src="img/goons/Eye.png" alt=""><span>YouTube<small>@playgoonsgame</small></span>
       </a>
     </div>
     <p class="all-links"><a href="#links">all our links in one place &rarr;</a></p>
@@ -670,7 +645,7 @@
 
 <footer>
   <div class="wrap">
-    &copy; <span id="year"></span> DoubleFrog &middot; made with <span class="ribbit">ribbits</span> and a frankly irresponsible number of goons
+    &copy; <span id="year"></span> DoubleFrog
   </div>
 </footer>
 
@@ -729,15 +704,22 @@
     {"file": "wumper", "name": "Wumper", "quips": ["Can I go home?", "wump wump..."]},
   ];
 
-  function randomItem(list) {
-    return list[Math.floor(Math.random() * list.length)];
+  // A goon works through every quip it has before repeating one, and never says the
+  // same line twice in a row unless it only has the one.
+  function nextQuip(goon) {
+    if (!goon.unsaid || goon.unsaid.length === 0) {
+      goon.unsaid = goon.quips.filter((quip) => quip !== goon.lastQuip || goon.quips.length === 1);
+    }
+    const index = Math.floor(Math.random() * goon.unsaid.length);
+    goon.lastQuip = goon.unsaid.splice(index, 1)[0];
+    return goon.lastQuip;
   }
 
   function say(target, goon) {
     const rect = target.getBoundingClientRect();
     const bubble = document.createElement("div");
     bubble.className = "bubble";
-    bubble.textContent = randomItem(goon.quips);
+    bubble.textContent = nextQuip(goon);
     bubble.style.left = (rect.left + rect.width / 2 + window.scrollX) + "px";
     bubble.style.top = (rect.top + window.scrollY - 8) + "px";
     bubble.style.position = "absolute";
