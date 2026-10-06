@@ -204,10 +204,19 @@
     overflow: hidden;
     box-shadow: 0 0 0 3px #000;
   }
-  .dev-pic.green { background: var(--green-dark); }
-  .dev-pic.red { background: var(--red-dark); }
-  .dev-pic img { width: 96px; height: 96px; display: block; }
+  .dev-pic.green { background: #b7efa6; }
+  .dev-pic.red { background: #f47997; }
+  .dev-pic img { width: 108px; height: 102px; display: block; }
   .dev:hover .dev-pic img { animation: wiggle 0.4s steps(2) infinite; }
+  .dev .favs { margin-top: 12px; color: var(--ink); }
+  .fav-goons { display: flex; justify-content: center; gap: 18px; margin-top: 10px; }
+  .fav-goon {
+    --scale: 3;
+    cursor: pointer;
+    animation: bob 2.6s ease-in-out infinite;
+  }
+  .fav-goon:nth-child(2) { animation-delay: -1.3s; }
+  .fav-goon:hover { animation: wiggle 0.4s steps(2) infinite; }
   .dev h3 { margin: 0; font-family: "m6x11", monospace; font-size: 32px; text-shadow: 2px 2px 0 var(--title-shadow); }
   .dev .tag { margin: 6px 0; }
   .dev .tag strong { color: var(--ink); background: var(--space-deep); padding: 0 6px; box-shadow: 0 0 0 2px #000; }
@@ -253,12 +262,14 @@
 
   .btn {
     display: inline-block;
-    font-family: "m5x7", monospace;
-    font-size: 32px;
+    font-family: "m6x11", monospace;
+    font-size: 48px;
     color: #fff;
     background: var(--green);
     border: 0;
-    padding: 14px 26px;
+    padding: 18px 40px 16px;
+    margin-top: 12px;
+    text-shadow: 3px 3px 0 var(--title-shadow);
     text-decoration: none;
     box-shadow: 0 6px 0 var(--green-dark), 0 6px 0 3px #000, 0 0 0 3px #000;
     transform: rotate(-2deg);
@@ -267,12 +278,19 @@
     z-index: 2;
     cursor: pointer;
   }
-  .btn:hover { transform: rotate(1deg) scale(1.06); }
+  .hero .btn { animation: nudge 2.2s ease-in-out infinite; }
+  .hero .btn:hover { animation: none; transform: rotate(1deg) scale(1.08); }
+  @keyframes nudge {
+    0%, 70%, 100% { transform: rotate(-2deg) scale(1); }
+    76% { transform: rotate(3deg) scale(1.08); }
+    82% { transform: rotate(-4deg) scale(1.08); }
+    88% { transform: rotate(2deg) scale(1.04); }
+  }
   .btn:active {
     transform: translateY(6px) rotate(1deg);
     box-shadow: 0 0 0 var(--green-dark), 0 0 0 3px #000, 0 0 0 3px #000;
   }
-  .btn small { display: block; font-family: "m6x11", monospace; font-size: 16px; opacity: 0.85; margin-top: 4px; }
+  .btn small { display: block; font-family: "m6x11", monospace; font-size: 16px; opacity: 0.9; margin-top: 6px; text-shadow: none; }
 
   /* floating goons */
   .floaters { position: absolute; inset: 0; z-index: 1; }
@@ -360,7 +378,7 @@
   .card img { --scale: 3; }
   .card h3 { margin: 8px 0 8px; font-family: "m6x11", monospace; font-size: 32px; font-weight: normal; text-shadow: 2px 2px 0 var(--title-shadow); }
   .card:nth-child(1) h3 { color: var(--yellow); }
-  .card:nth-child(2) h3 { color: var(--green); }
+  .card:nth-child(2) h3 { color: var(--red); }
   .card:nth-child(3) h3 { color: var(--blue); }
   .card p { margin: 0; color: var(--muted); }
 
@@ -471,7 +489,7 @@
   .tree-link:nth-of-type(even) { transform: rotate(1deg); }
   .tree-link:hover { transform: scale(1.04); }
   .tree-link img { --scale: 2; }
-  .tree-link img[src*="doubleFrog"] { margin: -16px 0; }
+  .tree-link img[src*="doubleFrog"] { width: 64px; height: 48px; margin: -4px 0; }
   .tree-link:hover img { animation: wiggle 0.4s steps(2) infinite; }
 
   @media (max-width: 640px) {
@@ -510,7 +528,7 @@
     <img class="px studio-logo" src="img/goons/doubleFrog.png" alt="DoubleFrog logo">
     <h1><span class="double">Double</span><span class="frog">Frog</span></h1>
     <p class="tagline">two game devs making silly games!</p>
-    <p class="sub">We make simple, easy-to-learn games with replayability in mind!</p>
+    <p class="sub">We make replayable games that are easy to learn but difficult to master!</p>
   </div>
 
   <section>
@@ -520,7 +538,7 @@
         <a href="#goons"><img src="img/logo_goons.png" alt="GOONS!"></a>
         <div>
           <span class="badge">in development</span>
-          <p>An auto-battler with roguelike runs. Fill your board with goons, watch them fight, fly through space, and repeat until the universe gives up.</p>
+          <p>A roguelike autobattler where you collect silly aliens and use powerful synergies to take down your foes!</p>
           <a class="more" href="#goons">meet the goons &rarr;</a>
         </div>
       </div>
@@ -536,14 +554,24 @@
           <h3>Luke Bradaric</h3>
           <p class="tag">aka <strong>kelu</strong></p>
           <p class="role">code &amp; design</p>
-          <p>Makes the goons do things. Has argued with a goon about a number at least once.</p>
+          <p>Makes the goons do things.</p>
+          <p class="favs">Favorite goons:<br>Plubububby and Shampin</p>
+          <div class="fav-goons">
+            <img class="px fav-goon" src="img/goons/plubububby.png" data-goon="Plubububby" alt="Plubububby" title="Plubububby">
+            <img class="px fav-goon" src="img/goons/shampin.png" data-goon="Shampin" alt="Shampin" title="Shampin">
+          </div>
         </div>
         <div class="dev">
           <div class="dev-pic red"><img class="px" src="img/frutti.png" alt="Francesca's pixel portrait"></div>
           <h3>Francesca Mancillas</h3>
           <p class="tag">aka <strong>Frutti</strong></p>
           <p class="role">art &amp; design</p>
-          <p>Draws every goon, pixel by pixel. Is personally responsible for there being so many goons.</p>
+          <p>Draws all the silly guys and (tries) to make the game fun!</p>
+          <p class="favs">Favorite goons:<br>Space Bongo &amp; Eye</p>
+          <div class="fav-goons">
+            <img class="px fav-goon" src="img/goons/spaceBongo.png" data-goon="Space Bongo" alt="Space Bongo" title="Space Bongo">
+            <img class="px fav-goon" src="img/goons/Eye.png" data-goon="Eye" alt="Eye" title="Eye">
+          </div>
         </div>
       </div>
     </div>
@@ -556,8 +584,8 @@
     <div class="floaters" id="floaters"></div>
     <img class="hero-logo" src="img/logo_goons.png" alt="GOONS!">
     <p class="tagline">an auto-battler full of little guys</p>
-    <p class="sub">Fill your board with goons. Watch them bonk the other board's goons. Lose a fight. Buy more goons. Repeat until space itself is afraid of you.</p>
-    <a class="btn" href="https://store.steampowered.com/app/1598400/GOONS/" target="_blank" rel="noopener">Wishlist on Steam<small>(it's free and the goons will know)</small></a>
+    <p class="sub">Collect silly aliens and use powerful synergies to take down your foes!</p>
+    <a class="btn" href="https://store.steampowered.com/app/1598400/GOONS/" target="_blank" rel="noopener">Wishlist on Steam<small>(it's free and we will love you)</small></a>
   </div>
 
   <section id="what">
@@ -565,19 +593,19 @@
       <h2>What is GOONS!?</h2>
       <div class="cards">
         <div class="card">
-          <img class="px" src="img/goons/muffin.png" alt="">
-          <h3>Build a board</h3>
-          <p>Collect goons, upgrade them, set them up on the board!</p>
-        </div>
-        <div class="card">
-          <img class="px" src="img/goons/snorb.png" alt="">
-          <h3>Watch the chaos</h3>
-          <p>Set up powerful synergies and watch the crazy battles unfold!</p>
+          <img class="px" src="img/goons/starby.png" alt="">
+          <h3>Build</h3>
+          <p>Collect goons, upgrade them, set them up on your ship!</p>
         </div>
         <div class="card">
           <img class="px" src="img/goons/Eye.png" alt="">
-          <h3>Fly through space</h3>
-          <p>Fly from planet to planet discovering unique events and defeating difficult bosses!</p>
+          <h3>Battle</h3>
+          <p>Create powerful synergies and watch the crazy battles unfold!</p>
+        </div>
+        <div class="card">
+          <img class="px" src="img/goons/rally.png" alt="">
+          <h3>Explore</h3>
+          <p>Travel through space discovering unique events and defeating difficult bosses!</p>
         </div>
       </div>
     </div>
@@ -585,9 +613,9 @@
 
   <section id="meet">
     <div class="wrap">
-      <h2>Meet the goons!</h2>
+      <h2>Meet some of the Goons!</h2>
       <div class="roster" id="roster"></div>
-      <p class="roster-note">click a goon. they have things to say.</p>
+      <p class="roster-note">Click a goon, they have things to say!</p>
     </div>
   </section>
 </main>
@@ -596,7 +624,7 @@
   <div class="linktree">
     <img class="px linktree-logo" src="img/goons/doubleFrog.png" alt="DoubleFrog logo">
     <h1><span class="double">Double</span><span class="frog">Frog</span></h1>
-    <p class="linktree-bio">makers of <strong>GOONS!</strong> - an auto-battler full of silly aliens</p>
+    <p class="linktree-bio">makers of <strong>GOONS!</strong>, an auto-battler full of silly aliens</p>
     <a class="tree-link" style="--c: #5ac54f" href="https://store.steampowered.com/app/1598400/GOONS/" target="_blank" rel="noopener">
       <img class="px" src="img/goons/earnie.png" alt="">Wishlist GOONS! on Steam
     </a>
@@ -613,7 +641,7 @@
       <img class="px" src="img/goons/Eye.png" alt="">YouTube
     </a>
     <a class="tree-link" style="--c: #424c6e" href="#about">
-      <img class="px" src="img/goons/doubleFrog.png" alt="">About DoubleFrog
+      <img class="px" src="img/doubleFrog_cropped.png" alt="">About DoubleFrog
     </a>
   </div>
 </main>
@@ -621,7 +649,7 @@
 <section class="socials" id="socials">
   <div class="wrap">
     <h2>Come hang out</h2>
-    <p class="sub">The goons are online. Wishlist, join the Discord, or watch them do goon stuff.</p>
+    <p class="sub">Wishlist the game! please! please! please! (and join us on Discord)</p>
     <div class="social-links">
       <a class="social" style="--c: #1b6aa5" href="https://store.steampowered.com/app/1598400/GOONS/" target="_blank" rel="noopener">
         <img class="px" src="img/goons/earnie.png" alt=""><span>Steam<small>wishlist GOONS!</small></span>
@@ -726,6 +754,11 @@
     document.body.appendChild(bubble);
     bubble.addEventListener("animationend", () => bubble.remove());
   }
+
+  document.querySelectorAll(".fav-goon").forEach((img) => {
+    const goon = goons.find((candidate) => candidate.name === img.dataset.goon);
+    img.addEventListener("click", () => say(img, goon));
+  });
 
   function boing(element) {
     element.classList.remove("boing");
