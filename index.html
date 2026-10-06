@@ -640,7 +640,7 @@
       <img class="px" src="img/goons/littleBuddy.png" alt="">Join the Discord
     </a>
     <a class="tree-link" style="--c: #c13584" href="https://www.instagram.com/playgoonsgame" target="_blank" rel="noopener">
-      <img class="px" src="img/goons/kitty.png" alt="">Instagram
+      <img class="px" src="img/goons/ithee.png" alt="">Instagram
     </a>
     <a class="tree-link" style="--c: #16151f" href="https://www.tiktok.com/@playgoonsgame" target="_blank" rel="noopener">
       <img class="px" src="img/goons/mrSmiler.png" alt="">TikTok
@@ -666,7 +666,7 @@
         <img class="px" src="img/goons/littleBuddy.png" alt=""><span>Discord<small>can we be friends?</small></span>
       </a>
       <a class="social" style="--c: #c13584" href="https://www.instagram.com/playgoonsgame" target="_blank" rel="noopener">
-        <img class="px" src="img/goons/kitty.png" alt=""><span>Instagram<small>@playgoonsgame</small></span>
+        <img class="px" src="img/goons/ithee.png" alt=""><span>Instagram<small>@playgoonsgame</small></span>
       </a>
       <a class="social" style="--c: #16151f" href="https://www.tiktok.com/@playgoonsgame" target="_blank" rel="noopener">
         <img class="px" src="img/goons/mrSmiler.png" alt=""><span>TikTok<small>@playgoonsgame</small></span>
@@ -780,7 +780,7 @@
     [6, 8], [88, 6], [2, 48], [93, 42], [12, 82], [82, 80],
   ];
   const floaters = document.getElementById("floaters");
-  const shuffled = goons.slice().sort(() => Math.random() - 0.5);
+  const shuffled = shuffle(goons);
   floatSpots.forEach(([x, y], index) => {
     const goon = shuffled[index];
     const img = document.createElement("img");
@@ -799,23 +799,30 @@
     floaters.appendChild(img);
   });
 
-  // roster: a hand-picked gang, laid out as 8 columns by 4 rows with three big goons in it
-  const rosterPicks = [
-    "Dark Star Cat", "Gooboo", "Horsey",
-    "Akumi", "Earnie", "Eye", "Glumpus", "Gurt", "Kitty", "Little Buddy", "Lunk",
-    "Muffin", "Plubububby", "Puppy", "Rally", "Seedling", "Shampin", "Snorb",
-    "Space Bongo", "Sqump", "Tank Nuki", "Dinkle, The Intern", "The Party Man",
+  function shuffle(list) {
+    const copy = list.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  // roster: a random gang every visit, laid out as 8 columns by 4 rows with three big
+  // (32px) goons in fixed spots and twenty small ones filling in around them
+  const bigGoonFiles = [
+    "blackHoleBuddy", "doubleFrog", "gooboo", "horsey", "moAndBibi", "mother",
+    "smogglo", "sniperSeal", "theCollector", "trash_goblin", "watcher",
   ];
-  const bigGoonSpots = {
-    "Dark Star Cat": { row: 1, col: 1 },
-    "Gooboo": { row: 1, col: 7 },
-    "Horsey": { row: 3, col: 4 },
-  };
+  const bigSpots = [{ row: 1, col: 1 }, { row: 1, col: 7 }, { row: 3, col: 4 }];
+  const bigPicks = shuffle(goons.filter((goon) => bigGoonFiles.includes(goon.file))).slice(0, bigSpots.length);
+  const smallPicks = shuffle(goons.filter((goon) => !bigGoonFiles.includes(goon.file))).slice(0, 20);
+  const bigGoonSpots = new Map(bigPicks.map((goon, index) => [goon, bigSpots[index]]));
   const roster = document.getElementById("roster");
-  rosterPicks.map((name) => goons.find((goon) => goon.name === name)).forEach((goon) => {
+  bigPicks.concat(smallPicks).forEach((goon) => {
     const card = document.createElement("div");
     card.className = "goon";
-    const spot = bigGoonSpots[goon.name];
+    const spot = bigGoonSpots.get(goon);
     if (spot) {
       card.classList.add("big");
       card.style.setProperty("--row", spot.row);
