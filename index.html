@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DoubleFrog</title>
 <meta name="description" content="DoubleFrog is a tiny game studio making GOONS!, an auto-battler full of little guys.">
-<link rel="icon" href="img/logo_doublefrog_256.png">
+<link rel="icon" href="img/goons/doubleFrog.png">
 <style>
   @font-face { font-family: "m5x7"; src: url("fonts/m5x7.ttf") format("truetype"); font-display: block; }
   @font-face { font-family: "m6x11"; src: url("fonts/m6x11.ttf") format("truetype"); font-display: block; }
@@ -103,7 +103,7 @@
     font-family: "m6x11", monospace;
     font-size: 32px;
   }
-  .brand img { width: 56px; height: 56px; transition: transform 0.2s; }
+  .brand img { --scale: 2; transition: transform 0.2s; }
   .brand:hover img { transform: rotate(-12deg) scale(1.1); }
 
   .tabs { display: flex; gap: 12px; }
@@ -134,7 +134,7 @@
   /* ---------- about us ---------- */
   .studio-hero { text-align: center; padding-top: 24px; padding-bottom: 24px; }
   .studio-logo {
-    width: min(260px, 60vw);
+    --scale: 7;
     animation: wobble 3s ease-in-out infinite;
     filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.35));
   }
@@ -453,7 +453,7 @@
     padding: 16px 16px 40px;
     text-align: center;
   }
-  .linktree-logo { width: 140px; height: 140px; animation: wobble 3s ease-in-out infinite; }
+  .linktree-logo { --scale: 4; animation: wobble 3s ease-in-out infinite; }
   .linktree h1 {
     font-family: "m6x11", monospace;
     font-weight: 400;
@@ -481,11 +481,12 @@
   .tree-link:nth-of-type(even) { transform: rotate(1deg); }
   .tree-link:hover { transform: scale(1.04); }
   .tree-link img { --scale: 2; }
-  .tree-link img[src*="logo"] { width: 40px; height: 40px; }
+  .tree-link img[src*="doubleFrog"] { --scale: 1; }
   .tree-link:hover img { animation: wiggle 0.4s steps(2) infinite; }
 
   @media (max-width: 640px) {
     .brand > span { display: none; }
+    .studio-logo { --scale: 5; }
     .tabs a { padding: 6px 10px; }
     .game-card { flex-direction: column; text-align: center; }
     .game-card img { width: 100%; }
@@ -507,7 +508,7 @@
 <header>
   <div class="wrap">
     <a class="brand" href="#about">
-      <img class="px" src="img/logo_doublefrog_256.png" alt="">
+      <img class="px" src="img/goons/doubleFrog.png" alt="">
       <span><span class="double">Double</span><span class="frog">Frog</span></span>
     </a>
     <nav class="tabs">
@@ -519,7 +520,7 @@
 
 <main class="page" id="page-about">
   <div class="wrap studio-hero">
-    <img class="px studio-logo" src="img/logo_doublefrog_256.png" alt="DoubleFrog logo">
+    <img class="px studio-logo" src="img/goons/doubleFrog.png" alt="DoubleFrog logo">
     <h1><span class="double">Double</span><span class="frog">Frog</span></h1>
     <p class="tagline">a tiny game studio making tiny weirdos</p>
     <p class="sub">We make small, silly, surprisingly deep games about lovable little creatures. Games you can learn in a minute and lose a weekend to.</p>
@@ -618,7 +619,7 @@
 
 <main class="page" id="page-links">
   <div class="linktree">
-    <img class="px linktree-logo" src="img/logo_doublefrog_256.png" alt="DoubleFrog logo">
+    <img class="px linktree-logo" src="img/goons/doubleFrog.png" alt="DoubleFrog logo">
     <h1><span class="double">Double</span><span class="frog">Frog</span></h1>
     <p class="linktree-bio">makers of <strong>GOONS!</strong> - an auto-battler full of silly aliens</p>
     <a class="tree-link" style="--c: #5ac54f" href="https://store.steampowered.com/app/1598400/GOONS/" target="_blank" rel="noopener">
@@ -637,7 +638,7 @@
       <img class="px" src="img/goons/kitty.png" alt="">Instagram
     </a>
     <a class="tree-link" style="--c: #424c6e" href="#about">
-      <img class="px" src="img/logo_doublefrog_256.png" alt="">About DoubleFrog
+      <img class="px" src="img/goons/doubleFrog.png" alt="">About DoubleFrog
     </a>
   </div>
 </main>
