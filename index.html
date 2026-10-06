@@ -206,6 +206,7 @@
     overflow: hidden;
     box-shadow: 0 0 0 3px #000;
   }
+  .dev-pic { cursor: pointer; }
   .dev-pic.green { background: #b7efa6; }
   .dev-pic.red { background: #f47997; }
   .dev-pic img { width: 108px; height: 102px; display: block; }
@@ -311,6 +312,7 @@
     user-select: none;
     -webkit-user-drag: none;
   }
+  .floater.faces-left { scale: -1 1; }
   .floater:hover { filter: drop-shadow(0 0 0 #fff) brightness(1.15); }
   .floater.boing { animation: boing 0.5s ease-out; }
   @keyframes bob {
@@ -763,6 +765,15 @@
     bubble.addEventListener("animationend", () => bubble.remove());
   }
 
+  const devQuips = {
+    green: { quips: ["That's a feature, not a bug", "Sometimes I'm allowed to draw", "I'm scared of her", "Sweeeeet!", "I made the freaks"] },
+    red: { quips: ["I LOVE HATSUNE MIKU!", "PLEASE WISHLIST OUR GAME!!!!!", "YAYAYAYAY!!!", "HELLO!!!", ":D", "I'm smiling off cooldown!"] },
+  };
+  document.querySelectorAll(".dev-pic").forEach((pic) => {
+    const dev = pic.classList.contains("green") ? devQuips.green : devQuips.red;
+    pic.addEventListener("click", () => say(pic, dev));
+  });
+
   document.querySelectorAll(".fav-goon").forEach((img) => {
     const goon = goons.find((candidate) => candidate.name === img.dataset.goon);
     img.addEventListener("click", () => say(img, goon));
@@ -789,6 +800,9 @@
     img.className = "floater px";
     img.style.left = x + "%";
     img.style.top = y + "%";
+    if (x > 50) {
+      img.classList.add("faces-left");
+    }
     img.style.setProperty("--t", (2.4 + Math.random() * 2) + "s");
     img.style.setProperty("--d", (-Math.random() * 3) + "s");
     img.style.setProperty("--r", ((Math.random() * 12) - 6) + "deg");
