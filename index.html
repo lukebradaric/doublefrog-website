@@ -185,6 +185,8 @@
     margin: 0 auto;
   }
   .dev {
+    display: flex;
+    flex-direction: column;
     background: var(--panel);
     padding: 24px;
     text-align: center;
@@ -207,13 +209,17 @@
   .dev-pic.green { background: #b7efa6; }
   .dev-pic.red { background: #f47997; }
   .dev-pic img { width: 108px; height: 102px; display: block; }
-  .dev:hover .dev-pic img { animation: wiggle 0.4s steps(2) infinite; }
+  .dev:hover .dev-pic { animation: wiggle 0.4s steps(2) infinite; }
   .dev .favs { margin-top: 12px; color: var(--ink); }
-  .fav-goons { display: flex; justify-content: center; gap: 18px; margin-top: 10px; }
+  .fav-goons { flex: 1; display: flex; justify-content: center; align-items: center; gap: 18px; padding: 12px 0; }
   .fav-goon {
     --scale: 3;
     cursor: pointer;
-    animation: bob 2.6s ease-in-out infinite;
+    animation: fav-bob 2.6s ease-in-out infinite;
+  }
+  @keyframes fav-bob {
+    0%, 100% { transform: translateY(6px) rotate(-6deg); }
+    50% { transform: translateY(-6px) rotate(6deg); }
   }
   .fav-goon:nth-child(2) { animation-delay: -1.3s; }
   .fav-goon:hover { animation: wiggle 0.4s steps(2) infinite; }
