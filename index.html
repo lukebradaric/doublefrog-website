@@ -460,6 +460,10 @@
   .social img { --scale: 2; }
   .social:hover img { animation: wiggle 0.4s steps(2) infinite; }
   .social small { display: block; font-family: "m6x11", monospace; font-size: 16px; opacity: 0.85; }
+  .press-cta { display: flex; justify-content: center; margin: 66px 0 0; }
+  #meet { padding-bottom: 24px; }
+  .press-cta .social { transform: rotate(-2deg); }
+  .press-cta .social:hover { transform: rotate(0) scale(1.08); }
   .all-links { text-align: center; margin: 28px 0 0; }
   .all-links a { color: var(--muted); }
   .all-links a:hover { color: var(--yellow); }
@@ -628,7 +632,9 @@
       <h2>Meet some of the Goons!</h2>
       <div class="roster" id="roster"></div>
       <p class="roster-note">Click a goon, they have things to say!</p>
-      <p class="all-links"><a href="presskit/">Press or content creator? Grab the press kit &rarr;</a></p>
+      <p class="press-cta"><a class="social" style="--c: #8b5cf6" href="presskit/">
+        <img class="px" src="img/goons/seer.png" alt=""><span>Press Kit<small>for press &amp; content creators</small></span>
+      </a></p>
     </div>
   </section>
 </main>
