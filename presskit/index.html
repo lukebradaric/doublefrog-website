@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOONS! Press Kit - DoubleFrog</title>
+<meta name="description" content="Press kit for GOONS!, an auto-battler roguelike by DoubleFrog: fact sheet, trailer, screenshots, logos and key art.">
+<meta property="og:title" content="GOONS! Press Kit">
+<meta property="og:description" content="Fact sheet, trailer, screenshots, logos and key art for GOONS!.">
+<meta property="og:image" content="https://doublefrog.games/presskit/files/key-art/GOONS_KeyArt_16x9_1920x1080.png">
+<meta property="og:url" content="https://doublefrog.games/presskit/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/goons/doubleFrog.png">
+<style>
+  @font-face { font-family: "m5x7"; src: url("../fonts/m5x7.ttf") format("truetype"); font-display: block; }
+  @font-face { font-family: "m6x11"; src: url("../fonts/m6x11.ttf") format("truetype"); font-display: block; }
+
+  :root {
+    --space: #1a1932;
+    --space-deep: #0e0d1f;
+    --panel: #2a2a4e;
+    --ink: #f4f0e6;
+    --muted: #a6a3c9;
+    --red: #e83b3b;
+    --green: #5ac54f;
+    --green-dark: #33984b;
+    --steam: #1b6aa5;
+    --steam-dark: #12466e;
+    --yellow: #ffc825;
+    --blue: #4d9be6;
+    --pink: #f68181;
+    --purple: #8b5cf6;
+    --slate: #424c6e;
+    --title-shadow: rgba(0, 0, 0, 0.71);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--space);
+    color: var(--ink);
+    font-family: "m5x7", monospace;
+    font-size: 32px;
+    line-height: 1;
+    font-synthesis: none;
+    -webkit-font-smoothing: none;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; height: auto; }
+  .px { image-rendering: pixelated; image-rendering: crisp-edges; }
+  a { color: var(--yellow); }
+  a:hover { color: #fff; }
+  strong { color: #fff; font-weight: normal; }
+
+  /* ---------- the sky (same as the main site) ---------- */
+  .stars, .stars::after { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .stars {
+    background:
+      radial-gradient(1px 1px at 10% 20%, #fff 99%, transparent),
+      radial-gradient(1px 1px at 30% 70%, #fff 99%, transparent),
+      radial-gradient(2px 2px at 55% 15%, var(--yellow) 99%, transparent),
+      radial-gradient(1px 1px at 75% 45%, #fff 99%, transparent),
+      radial-gradient(2px 2px at 90% 85%, var(--blue) 99%, transparent),
+      radial-gradient(1px 1px at 15% 90%, #fff 99%, transparent),
+      radial-gradient(1px 1px at 45% 50%, #fff 99%, transparent),
+      radial-gradient(2px 2px at 65% 80%, var(--pink) 99%, transparent),
+      radial-gradient(1px 1px at 85% 10%, #fff 99%, transparent),
+      radial-gradient(1px 1px at 5% 55%, #fff 99%, transparent),
+      radial-gradient(ellipse at 50% 120%, #3b2a6e 0%, transparent 60%),
+      var(--space);
+    background-size: 340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px,
+                     340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px, 100% 100%, 100% 100%;
+  }
+  .stars::after {
+    content: "";
+    background:
+      radial-gradient(1px 1px at 20% 40%, #fff 99%, transparent),
+      radial-gradient(1px 1px at 60% 60%, #fff 99%, transparent),
+      radial-gradient(1px 1px at 80% 25%, #fff 99%, transparent),
+      radial-gradient(1px 1px at 40% 85%, #fff 99%, transparent);
+    background-size: 210px 210px;
+    animation: twinkle 3s steps(2) infinite;
+  }
+  @keyframes twinkle { 50% { opacity: 0.2; } }
+
+  header, main, footer { position: relative; z-index: 1; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- header ---------- */
+  header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 18px; padding-bottom: 18px; gap: 12px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--ink); text-decoration: none;
+    font-family: "m6x11", monospace; font-size: 32px;
+  }
+  .brand img { width: 64px; height: 48px; transition: transform 0.2s; }
+  .brand:hover img { transform: rotate(-12deg) scale(1.1); }
+  .double { color: var(--green); }
+  .frog { color: var(--red); }
+  .tabs { display: flex; gap: 12px; }
+  .tabs a {
+    color: var(--muted); text-decoration: none;
+    padding: 8px 16px;
+    background: var(--space-deep);
+    box-shadow: 0 0 0 3px var(--slate);
+    transition: transform 0.15s, color 0.15s;
+  }
+  .tabs a:hover { color: var(--yellow); transform: rotate(-3deg); }
+  .tabs a.active {
+    color: #fff; background: var(--purple);
+    box-shadow: 0 0 0 3px #000, 0 5px 0 3px #000;
+    transform: rotate(-2deg);
+  }
+
+  /* ---------- hero ---------- */
+  .hero-art {
+    position: relative;
+    aspect-ratio: 3840 / 1240;
+    max-height: 640px;
+    width: 100%;
+    background: #1d1240 url("web/key-art/GOONS_KeyArt_NoLogo_Wide_3840x1240.webp") right center / cover no-repeat;
+    box-shadow: 0 3px 0 #000, 0 -3px 0 #000;
+  }
+  .hero-logo {
+    position: absolute;
+    left: 7%; top: 50%;
+    width: 38%; height: auto;
+    translate: 0 -50%;
+    animation: wobble 4s ease-in-out infinite;
+    filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.35));
+  }
+  .hero-inner { max-width: 820px; margin: 0 auto; padding: 22px 16px 0; text-align: center; }
+  @keyframes wobble {
+    0%, 100% { transform: rotate(-2deg) scale(1); }
+    50% { transform: rotate(2deg) scale(1.03); }
+  }
+  .hero h1 {
+    font-family: "m6x11", monospace; font-weight: normal; font-size: 32px;
+    color: var(--yellow);
+    margin: 6px 0 4px;
+    text-shadow: 3px 3px 0 var(--title-shadow);
+    transform: rotate(-1.5deg);
+  }
+  .pitch { margin: 8px 0 20px; text-shadow: 2px 2px 0 #000; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 18px 22px; justify-content: center; }
+
+  .btn {
+    display: inline-block;
+    font-family: "m6x11", monospace; font-size: 32px;
+    color: #fff; text-decoration: none;
+    background: var(--c, var(--green));
+    padding: 14px 24px 12px;
+    text-shadow: 3px 3px 0 var(--title-shadow);
+    box-shadow: 0 6px 0 var(--c-dark, var(--green-dark)), 0 6px 0 3px #000, 0 0 0 3px #000;
+    transform: rotate(-2deg);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .btn + .btn, .btn.alt { transform: rotate(2deg); }
+  .btn:hover { color: #fff; transform: rotate(0) scale(1.06); }
+  .btn:active { transform: translateY(6px); box-shadow: 0 0 0 3px #000; }
+  .btn small { display: block; font-size: 16px; opacity: 0.9; margin-top: 4px; text-shadow: none; }
+  .btn.steam { --c: var(--steam); --c-dark: var(--steam-dark); }
+
+  /* ---------- sections ---------- */
+  section { padding: 48px 0; scroll-margin-top: 8px; }
+  h2 {
+    font-family: "m6x11", monospace; font-weight: normal; font-size: 48px;
+    margin: 0 0 28px;
+    text-align: center;
+    text-shadow: 3px 3px 0 var(--title-shadow);
+    transform: rotate(-1.5deg);
+  }
+  h3 {
+    font-family: "m6x11", monospace; font-weight: normal; font-size: 32px;
+    margin: 0 0 14px;
+    text-shadow: 2px 2px 0 var(--title-shadow);
+  }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); }
+  .panel {
+    background: var(--panel);
+    padding: 24px;
+    box-shadow: 0 0 0 3px #000, 6px 6px 0 3px #000;
+  }
+
+  /* ---------- fact sheet ---------- */
+  .facts { max-width: 760px; margin: 0 auto; }
+  .fact-table { width: 100%; border-collapse: collapse; }
+  .fact-table th, .fact-table td { text-align: left; vertical-align: top; padding: 7px 10px; line-height: 1.05; }
+  .fact-table th { font-weight: normal; color: var(--yellow); white-space: nowrap; width: 1%; }
+  .fact-table tr:nth-child(odd) { background: rgba(0, 0, 0, 0.22); }
+  .fact-table td { overflow-wrap: anywhere; }
+
+  /* ---------- media ---------- */
+  .trailer { max-width: 960px; margin: 0 auto; }
+  .trailer video { width: 100%; display: block; background: #000; box-shadow: 0 0 0 3px #000, 8px 8px 0 3px #000; }
+
+  .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+  .grid.small { grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+  .tile {
+    margin: 0;
+    background: var(--space-deep);
+    box-shadow: 0 0 0 3px var(--slate);
+    display: flex; flex-direction: column;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .tile:hover { transform: translateY(-4px) rotate(-0.6deg); box-shadow: 0 0 0 3px var(--yellow); }
+  .tile .thumb {
+    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #11102a;
+    cursor: zoom-in;
+  }
+  .tile .thumb img, .tile .thumb video { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .tile .thumb.cover img { object-fit: cover; }
+  .tile .thumb.light { background: #fff; }
+  .tile .thumb.check {
+    background: repeating-conic-gradient(#232246 0 25%, #1a1932 0 50%) 0 0 / 24px 24px;
+  }
+  .tile .thumb.pad img { padding: 16px; }
+  .tile figcaption {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px;
+    padding: 10px 12px 12px;
+    font-size: 24px;
+  }
+  .tile figcaption span { color: var(--muted); }
+  .dl {
+    font-family: "m6x11", monospace; font-size: 16px;
+    color: var(--space-deep); background: var(--yellow);
+    text-decoration: none;
+    padding: 5px 8px 3px;
+    box-shadow: 0 0 0 2px #000, 0 3px 0 2px #000;
+    white-space: nowrap;
+  }
+  .dl:hover { color: var(--space-deep); background: #fff; }
+  .dl::before { content: "\2193  "; }
+  h3.sub-head { text-align: center; color: var(--muted); margin: 40px 0 20px; }
+
+  /* ---------- lightbox ---------- */
+  dialog {
+    padding: 0; border: 0; background: transparent;
+    max-width: 96vw; max-height: 96vh;
+  }
+  dialog::backdrop { background: rgba(8, 7, 20, 0.9); }
+  dialog img { display: block; max-width: 96vw; max-height: 86vh; box-shadow: 0 0 0 3px #000; }
+  dialog .bar {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding-top: 10px;
+    font-family: "m6x11", monospace; font-size: 16px; color: var(--ink);
+  }
+  dialog button {
+    font: inherit; color: var(--ink); background: var(--slate);
+    border: 0; padding: 6px 10px; cursor: pointer;
+    box-shadow: 0 0 0 2px #000;
+  }
+  dialog button:hover { background: var(--yellow); color: var(--space-deep); }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 32px;
+    color: var(--muted);
+    font-family: "m6x11", monospace; font-size: 16px;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--yellow); }
+
+  @media (max-width: 900px) {
+  }
+  @media (max-width: 700px) {
+    body { font-size: 28px; }
+    .brand > span { display: none; }
+    .tabs { gap: 8px; }
+    .tabs a { padding: 6px 8px; font-size: 22px; white-space: nowrap; }
+    .hero-art { aspect-ratio: auto; height: 200px; background-position: 85% center; }
+    .hero-logo { left: 50%; top: auto; bottom: -48px; translate: -50% 0; width: min(380px, 80%); }
+    .hero-inner { padding-top: 60px; }
+    .btn { font-size: 24px; }
+    h2 { font-size: 40px; }
+    .fact-table th { white-space: normal; width: 34%; }
+    .tile figcaption { font-size: 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="../#about">
+      <img class="px" src="../img/doubleFrog_cropped.png" alt="">
+      <span><span class="double">Double</span><span class="frog">Frog</span></span>
+    </a>
+    <nav class="tabs">
+      <a href="../#about">About Us</a>
+      <a href="../#goons">GOONS!</a>
+      <a class="active" href="./">Press Kit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-art">
+      <img class="hero-logo" src="web/logos/GOONS_Logo_Transparent.webp" width="1235" height="572" alt="GOONS!">
+    </div>
+    <div class="hero-inner">
+      <h1>Press Kit</h1>
+      <p class="pitch">GOONS! is an auto-battler roguelike: fill a board with silly little Goons, then watch them fight on their own.</p>
+      <div class="buttons">
+        <a class="btn" href="GOONS_PressKit.zip" download>Download Press Kit<small>.zip, 58 MB</small></a>
+        <a class="btn steam" href="https://store.steampowered.com/app/1598400" target="_blank" rel="noopener">Wishlist on Steam<small>store.steampowered.com</small></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fact sheet (Fact Sheet.md) -->
+  <section id="facts">
+    <div class="wrap">
+      <h2>Fact sheet</h2>
+      <div class="facts">
+        <div class="panel">
+          <table class="fact-table">
+            <tr><th>Title</th><td>GOONS!</td></tr>
+            <tr><th>Developer</th><td>DoubleFrog</td></tr>
+            <tr><th>Publisher</th><td>DoubleFrog (self-published)</td></tr>
+            <tr><th>Team</th><td>Luke Bradaric and Francesca Mancillas (two developers)</td></tr>
+            <tr><th>Based in</th><td>USA</td></tr>
+            <tr><th>Release date</th><td>TBA</td></tr>
+            <tr><th>Platforms</th><td>PC (Windows) and Mac, on Steam</td></tr>
+            <tr><th>Price</th><td>TBA</td></tr>
+            <tr><th>Genre</th><td>Auto-battler roguelike, solo and async PvP</td></tr>
+            <tr><th>Languages</th><td>English</td></tr>
+            <tr><th>Steam</th><td><a href="https://store.steampowered.com/app/1598400" target="_blank" rel="noopener">https://store.steampowered.com/app/1598400</a></td></tr>
+            <tr><th>Discord</th><td><a href="https://discord.com/invite/9V5pJeUgAH" target="_blank" rel="noopener">https://discord.com/invite/9V5pJeUgAH</a></td></tr>
+            <tr><th>Website</th><td><a href="https://doublefrog.games">doublefrog.games</a></td></tr>
+            <tr><th>Press contact</th><td><a href="mailto:playgoonsgame@gmail.com">playgoonsgame@gmail.com</a></td></tr>
+            <tr><th>Socials</th><td>@playgoonsgame on <a href="https://www.instagram.com/playgoonsgame" target="_blank" rel="noopener">Instagram</a>, <a href="https://www.tiktok.com/@playgoonsgame" target="_blank" rel="noopener">TikTok</a> and <a href="https://www.youtube.com/@playgoonsgame" target="_blank" rel="noopener">YouTube</a></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trailer (no YouTube link yet, so the MP4 from Video/) -->
+  <section id="trailer">
+    <div class="wrap">
+      <h2>Trailer</h2>
+      <div class="trailer">
+        <video controls preload="metadata" playsinline poster="web/key-art/GOONS_KeyArt_16x9_1920x1080.webp">
+          <source src="files/video/GOONS_Gameplay_Trailer.mp4" type="video/mp4">
+        </video>
+        <p style="text-align: center; margin-top: 22px;"><a class="dl" href="files/video/GOONS_Gameplay_Trailer.mp4" download>Gameplay trailer &middot; MP4, 1080p, 31s, 35 MB</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section id="screenshots">
+    <div class="wrap">
+      <h2>Screenshots</h2>
+      <div class="grid shots">
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_01_Shop_And_Board.png"><img src="web/screenshots/GOONS_01_Shop_And_Board.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: shop and board"></a><figcaption>Shop and board <a class="dl" href="files/screenshots/GOONS_01_Shop_And_Board.png" download>PNG &middot; 135 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_02_Sector_Map.png"><img src="web/screenshots/GOONS_02_Sector_Map.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: sector map"></a><figcaption>Sector map <a class="dl" href="files/screenshots/GOONS_02_Sector_Map.png" download>PNG &middot; 88 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_03_Early_Battle.png"><img src="web/screenshots/GOONS_03_Early_Battle.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: early battle"></a><figcaption>Early battle <a class="dl" href="files/screenshots/GOONS_03_Early_Battle.png" download>PNG &middot; 106 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_04_Battle.png"><img src="web/screenshots/GOONS_04_Battle.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: battle"></a><figcaption>Battle <a class="dl" href="files/screenshots/GOONS_04_Battle.png" download>PNG &middot; 131 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_05_Battle_Double_Friends.png"><img src="web/screenshots/GOONS_05_Battle_Double_Friends.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: battle, double friends"></a><figcaption>Battle, double friends <a class="dl" href="files/screenshots/GOONS_05_Battle_Double_Friends.png" download>PNG &middot; 151 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_06_Shop_Rerolled.png"><img src="web/screenshots/GOONS_06_Shop_Rerolled.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: shop rerolled"></a><figcaption>Shop rerolled <a class="dl" href="files/screenshots/GOONS_06_Shop_Rerolled.png" download>PNG &middot; 131 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_07_Battle_Late_Run.png"><img src="web/screenshots/GOONS_07_Battle_Late_Run.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: battle late in a run"></a><figcaption>Battle, late run <a class="dl" href="files/screenshots/GOONS_07_Battle_Late_Run.png" download>PNG &middot; 159 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_08_Huge_Late_Battle.png"><img src="web/screenshots/GOONS_08_Huge_Late_Battle.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: huge late battle"></a><figcaption>Huge late battle <a class="dl" href="files/screenshots/GOONS_08_Huge_Late_Battle.png" download>PNG &middot; 1.7 MB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/screenshots/GOONS_09_Collection.png"><img src="web/screenshots/GOONS_09_Collection.webp" width="1600" height="900" loading="lazy" alt="GOONS! screenshot: collection"></a><figcaption>Collection <a class="dl" href="files/screenshots/GOONS_09_Collection.png" download>PNG &middot; 108 KB</a></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFs (shown as small looping MP4s, the GIF is the download) -->
+  <section id="gifs">
+    <div class="wrap">
+      <h2>GIFs</h2>
+      <div class="grid">
+        <figure class="tile"><div class="thumb"><video src="web/video/GOONS_Battle_Starts.mp4" autoplay muted loop playsinline aria-label="GIF: a battle starts"></video></div><figcaption>Battle starts <a class="dl" href="files/video/GOONS_Battle_Starts.gif" download>GIF &middot; 2.0 MB</a></figcaption></figure>
+        <figure class="tile"><div class="thumb"><video src="web/video/GOONS_Big_Battle.mp4" autoplay muted loop playsinline aria-label="GIF: a big battle"></video></div><figcaption>Big battle <a class="dl" href="files/video/GOONS_Big_Battle.gif" download>GIF &middot; 2.1 MB</a></figcaption></figure>
+        <figure class="tile"><div class="thumb"><video src="web/video/GOONS_Board_Explodes.mp4" autoplay muted loop playsinline aria-label="GIF: the board explodes"></video></div><figcaption>Board explodes <a class="dl" href="files/video/GOONS_Board_Explodes.gif" download>GIF &middot; 2.7 MB</a></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos & key art -->
+  <section id="logos">
+    <div class="wrap">
+      <h2>Logos &amp; key art</h2>
+
+      <h3 class="sub-head">Logos</h3>
+      <div class="grid small">
+        <figure class="tile"><a class="thumb check pad" href="files/logos/GOONS_Logo_Transparent.png" download><img src="web/logos/GOONS_Logo_Transparent.webp" width="1235" height="572" loading="lazy" alt="GOONS! logo, transparent"></a><figcaption>GOONS! logo, transparent <span>1235&times;572</span> <a class="dl" href="files/logos/GOONS_Logo_Transparent.png" download>PNG &middot; 188 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/logos/GOONS_Logo_On_Navy.png" download><img src="web/logos/GOONS_Logo_On_Navy.webp" width="1439" height="776" loading="lazy" alt="GOONS! logo on navy"></a><figcaption>GOONS! logo on navy <span>1439&times;776</span> <a class="dl" href="files/logos/GOONS_Logo_On_Navy.png" download>PNG &middot; 219 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb light" href="files/logos/GOONS_Logo_On_White.png" download><img src="web/logos/GOONS_Logo_On_White.webp" width="1439" height="776" loading="lazy" alt="GOONS! logo on white"></a><figcaption>GOONS! logo on white <span>1439&times;776</span> <a class="dl" href="files/logos/GOONS_Logo_On_White.png" download>PNG &middot; 134 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb check pad" href="files/logos/GOONS_Icon_1200.png" download><img src="web/logos/GOONS_Icon_1200.webp" width="1200" height="1200" loading="lazy" alt="GOONS! icon"></a><figcaption>GOONS! icon <span>1200&times;1200</span> <a class="dl" href="files/logos/GOONS_Icon_1200.png" download>PNG &middot; 260 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb check pad" href="files/logos/DoubleFrog_Logo_Transparent.png" download><img class="px" src="web/logos/DoubleFrog_Logo_Transparent.webp" width="196" height="140" loading="lazy" alt="DoubleFrog logo, transparent"></a><figcaption>DoubleFrog logo, transparent <span>1960&times;1400</span> <a class="dl" href="files/logos/DoubleFrog_Logo_Transparent.png" download>PNG &middot; 15 KB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/logos/DoubleFrog_Logo_On_Navy.png" download><img class="px" src="web/logos/DoubleFrog_Logo_On_Navy.webp" width="1176" height="896" loading="lazy" alt="DoubleFrog logo on navy"></a><figcaption>DoubleFrog logo on navy <span>2352&times;1792</span> <a class="dl" href="files/logos/DoubleFrog_Logo_On_Navy.png" download>PNG &middot; 22 KB</a></figcaption></figure>
+      </div>
+
+      <h3 class="sub-head">Key art</h3>
+      <div class="grid small">
+        <figure class="tile"><a class="thumb" href="files/key-art/GOONS_KeyArt_16x9_3840x2160.png" download><img src="web/key-art/GOONS_KeyArt_16x9_3840x2160.webp" width="1600" height="900" loading="lazy" alt="GOONS! key art, 16:9 4K"></a><figcaption>Key art 16:9, 4K <span>3840&times;2160</span> <a class="dl" href="files/key-art/GOONS_KeyArt_16x9_3840x2160.png" download>PNG &middot; 2.6 MB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/key-art/GOONS_KeyArt_16x9_1920x1080.png" download><img src="web/key-art/GOONS_KeyArt_16x9_1920x1080.webp" width="1600" height="900" loading="lazy" alt="GOONS! key art, 16:9 1080p"></a><figcaption>Key art 16:9, 1080p <span>1920&times;1080</span> <a class="dl" href="files/key-art/GOONS_KeyArt_16x9_1920x1080.png" download>PNG &middot; 1.1 MB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/key-art/GOONS_KeyArt_4096x2530.png" download><img src="web/key-art/GOONS_KeyArt_4096x2530.webp" width="1600" height="988" loading="lazy" alt="GOONS! key art, full"></a><figcaption>Key art, full <span>4096&times;2530</span> <a class="dl" href="files/key-art/GOONS_KeyArt_4096x2530.png" download>PNG &middot; 1.8 MB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb" href="files/key-art/GOONS_KeyArt_Square_2048.png" download><img src="web/key-art/GOONS_KeyArt_Square_2048.webp" width="1600" height="1600" loading="lazy" alt="GOONS! key art, square"></a><figcaption>Key art, square <span>2048&times;2048</span> <a class="dl" href="files/key-art/GOONS_KeyArt_Square_2048.png" download>PNG &middot; 1.6 MB</a></figcaption></figure>
+        <figure class="tile"><a class="thumb cover" href="files/key-art/GOONS_KeyArt_NoLogo_Wide_3840x1240.png" download><img src="web/key-art/GOONS_KeyArt_NoLogo_Wide_3840x1240.webp" width="1920" height="620" loading="lazy" alt="GOONS! key art, wide, no logo"></a><figcaption>Key art, wide, no logo <span>3840&times;1240</span> <a class="dl" href="files/key-art/GOONS_KeyArt_NoLogo_Wide_3840x1240.png" download>PNG &middot; 1.2 MB</a></figcaption></figure>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<dialog id="lightbox" aria-label="Screenshot">
+  <img alt="">
+  <div class="bar">
+    <button type="button" data-step="-1" aria-label="Previous screenshot">&larr;</button>
+    <a class="dl" download>Download PNG</a>
+    <button type="button" data-step="1" aria-label="Next screenshot">&rarr;</button>
+    <button type="button" data-close>close &times;</button>
+  </div>
+</dialog>
+
+<footer>
+  <div class="wrap">
+    &copy; <span id="year">2026</span> DoubleFrog &middot; <a href="../#about">About Us</a> &middot; <a href="../#goons">GOONS!</a> &middot; <a href="./">Press Kit</a>
+  </div>
+</footer>
+
+<script>
+  // Screenshots open full size in a lightbox (plain links without JavaScript).
+  const lightbox = document.getElementById("lightbox");
+  const shots = [...document.querySelectorAll(".shots .thumb")];
+  let current = 0;
+  function show(index) {
+    current = (index + shots.length) % shots.length;
+    const href = shots[current].getAttribute("href");
+    lightbox.querySelector("img").src = href;
+    lightbox.querySelector("img").alt = shots[current].querySelector("img").alt;
+    lightbox.querySelector(".dl").href = href;
+  }
+  shots.forEach((link, index) => {
+    link.addEventListener("click", (event) => {
+      if (!lightbox.showModal) return;
+      event.preventDefault();
+      show(index);
+      lightbox.showModal();
+    });
+  });
+  lightbox.addEventListener("click", (event) => {
+    const step = event.target.dataset.step;
+    if (step) show(current + Number(step));
+    else if (event.target === lightbox || "close" in event.target.dataset) lightbox.close();
+  });
+  lightbox.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") show(current - 1);
+    if (event.key === "ArrowRight") show(current + 1);
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
